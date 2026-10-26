@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="balance-container">
+    <header class="balance-header">
+      <h2>Пополните баланс</h2>
+    </header>
+
+    <div class="balance-info">
+      <p>Ваш текущий баланс: <strong>{{ balance }} руб.</strong></p>
+    </div>
+
+    <section class="balance-forms">
+      <div class="form-group">
+        <form action="{{ url_for('add_money') }}" method="POST" class="balance-form">
+          <button type="submit" class="btn btn-primary">Получить 1 руб.</button>
+        </form>
+      </div>
+
+      <div class="form-group">
+        <h3>Введите сумму, которую хотите получить</h3>
+        <form action="{{ url_for('add_money') }}" method="POST" class="balance-form">
+          <input type="number" min="0" name="money" rows="5" cols="50" class="textarea-input" placeholder="Введите сумму здесь..." ></textarea>
+          <button type="submit" class="btn btn-primary">Отправить</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Вывод флэш-сообщений -->
+    <div class="balance-alerts">
+      {% for category, message in get_flashed_messages(with_categories=True) %}
+        <div class="alert alert-{{ category }}">{{ message }}</div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

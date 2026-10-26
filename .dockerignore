@@ -1,0 +1,13 @@
+.venv/
+venv/
+__pycache__/
+*.pyc
+.idea/
+.vscode/
+.git/
+.DS_Store
+.env
+README.md
+Dockerfile
+.dockerignore
+writeup/

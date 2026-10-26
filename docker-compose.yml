@@ -1,0 +1,14 @@
+services:
+  gbank:
+    build: .
+    ports:
+      - "8000:8000"
+    env_file:
+      - path: .env
+        required: false
+    volumes:
+      - gbank-data:/app/instance
+    restart: unless-stopped
+
+volumes:
+  gbank-data:

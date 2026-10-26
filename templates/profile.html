@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="greeting">
+        <h1>Добрый день, {{ current_user.username }}</h1>
+    </div>
+    <div class="account-info">
+        <div class="account-balance">
+            <p>{{ current_user.balance }} ₽</p>
+            <p>Black</p>
+        </div>
+        <button>Получить дебетовую карту</button>
+    </div>
+    <div class="search-bar">
+        <input type="text" placeholder="Поиск">
+    </div>
+    <div class="cards">
+        <div class="card">
+            <img src="{{ url_for('static', filename='images/transfers.png')}}" alt="Переводы">
+        </div>
+        <div class="card">
+            <img src="{{ url_for('static', filename='images/nalog.png')}}" alt="Налоги">
+        </div>
+        <div class="card">
+            <img src="{{ url_for('static', filename='images/operator.png')}}" alt="Связь с оператором">
+        </div>
+        <div class="card">
+            <img src="{{ url_for('static', filename='images/ipoteka.png')}}" alt="Ипотека">
+        </div>
+        <div class="card">
+            <img src="{{ url_for('static', filename='images/donate.png')}}" alt="Донат в игры">
+        </div>
+        <div class="card">
+            <img src="{{ url_for('static', filename='images/dms.png')}}" alt="ДМС">
+        </div>
+    </div>
+    <div class="actions">
+        <button>
+            <img src="{{ url_for('static', filename='images/phone.png')}}" alt="Перевести по телефону">
+            Перевести по телефону
+        </button>
+        <button>
+            <img src="{{ url_for('static', filename='images/requisites.png')}}" alt="Перевести по реквизитам">
+            Перевести по реквизитам
+        </button>
+        <button>
+            <img src="{{ url_for('static', filename='images/mobile.png')}}" alt="Оплатить мобильный">
+            Оплатить мобильный
+        </button>
+        <button>
+            <img src="{{ url_for('static', filename='images/receipt.png')}}" alt="Распознать квитанцию">
+            Распознать квитанцию
+        </button>
+    </div>
+
+    <div class="cashback">
+        <h2>Кэшбэк и бонусы</h2>
+        <div class="offers">
+            <div class="offer">
+                <img src="{{ url_for('static', filename='images/pollos.png')}}" alt="Кэшбек на сеть фастфудов">
+                <p>Кэшбэк 10%</p>
+            </div>
+            <div class="offer">
+                <img src="{{ url_for('static', filename='images/adidas.png')}}" alt="Брендовые кроссовки">
+                <p>Скидки от 2%</p>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div>
+        <a href="{{ url_for('logout') }}"  class="profile-buttons">Выйти</a>
+        <a href="{{ url_for('change_password') }}" class="profile-buttons">Сменить пароль</a>
+    </div>
+{% endblock %}

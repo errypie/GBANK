@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+	<div class="error-container">
+		<div class="gbank-404">
+			<img src="{{ url_for('static', filename='images/404.png')}}" width="30%" height="auto">
+		</div>
+		<h2>Опа! Такой страницы нет!</h2>
+		<br>
+		<div class="back-home">
+			<a href="{{ url_for('home')}}">Вернуться к главной</a>
+		</div>
+	</div>
+{% endblock %}

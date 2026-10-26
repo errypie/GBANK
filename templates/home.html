@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <img src="{{ url_for('static', filename='images/welcome.png')}}" alt="Добро пожаловать" width="100%">
+    <br>
+    <br>
+    <div class="cashback">
+        <h2>Специальные предложения клиентам</h2>
+        <div class="offers">
+            <div class="offer">
+                <img src="{{ url_for('static', filename='images/logan.png')}}" alt="Tazi">
+                <p>Скидка на покупку такси!</p>
+            </div>
+            <div class="offer">
+                <img src="{{ url_for('static', filename='images/barja.png')}}" alt="Barja">
+                <p>Баржа Навсегда!</p>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="top-users-container">
+        <h2>Топ 10 самых богатых пользователей</h2>
+
+        {% if top_users %}
+            <table class="top-users-table">
+                <thead>
+                    <tr>
+                        <th>Имя пользователя</th>
+                        <th>Баланс</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in top_users %}
+                        <tr>
+                            <td>{{ user.username }}</td>
+                            <td>{{ user.balance }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>Нет данных о пользователях.</p>
+        {% endif %}
+    </div>
+{% endblock %}

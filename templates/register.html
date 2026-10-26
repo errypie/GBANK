@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="registration-cont">
+        <div class="registration-form">
+            <h2 class="form-heading">Регистрация</h2>
+            <!-- Форма регистрации -->
+            <form action="{{ url_for('register') }}" method="POST">
+                {{ form.hidden_tag() }}
+
+                <div>
+                    {{ form.username(class="form-control", placeholder=form.username.label.text) }}
+                </div>
+
+                <div>
+                    {{ form.password(class="form-control", placeholder=form.password.label.text) }}
+                    {% if form.password.errors %}  <!-- Ошибки валидации для поля password -->
+                        <div class="text-danger">
+                            {% for error in form.password.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div>
+                    {{ form.confirm_password(class="form-control", placeholder=form.confirm_password.label.text) }}
+                </div>
+
+                <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+            </form>
+
+            <br>
+            <!-- Ошибки для имени пользователя -->
+            {% if form.username.errors %}
+                <div class="text-danger">
+                    {% for error in form.username.errors %}
+                        <span>Ошибка: {{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <!-- Ошибки для подтверждения пароля -->
+            {% if form.confirm_password.errors %}
+                <div class="text-danger">
+                    {% for error in form.confirm_password.errors %}
+                        <span>Ошибка: {{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

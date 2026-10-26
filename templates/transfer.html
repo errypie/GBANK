@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="transfer-container">
+    <header class="transfer-header">
+      <h2>Переводы</h2>
+    </header>
+
+    <section class="transfer-form-section">
+      <form method="POST" class="transfer-form">
+        {{ form.hidden_tag() }}
+
+        <div class="transfer-form-group">
+          <label for="receiver_username" class="transfer-form-label">Имя получателя</label>
+          {{ form.receiver_username(class="transfer-form-control") }}
+        </div>
+
+        <div class="transfer-form-group">
+          <label for="amount" class="transfer-form-label">Сумма</label>
+          {{ form.amount(class="transfer-form-control", type="number") }}
+        </div>
+
+        <button type="submit" class="transfer-btn-submit">Перевести</button>
+      </form>
+
+      <!-- Кнопка просмотра истории транзакций -->
+      <a href="/transactions" class="transfer-btn-history">Посмотреть историю транзакций</a>
+    </section>
+
+    <!-- Вывод флэш-сообщений -->
+    <div class="transfer-alerts">
+      {% for category, message in get_flashed_messages(with_categories=True) %}
+        <div class="transfer-alert transfer-alert-{{ category }}">{{ message }}</div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

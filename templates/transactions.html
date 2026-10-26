@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="transaction-history-container">
+        <h2>История транзакций</h2>
+
+        <div class="transactions-section">
+            <h3>Отправленные транзакции</h3>
+            {% if transactions_sent %}
+                <table class="transactions-table">
+                    <thead>
+                        <tr>
+                            <th>Получатель</th>
+                            <th>Сумма</th>
+                            <th>Дата</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for transaction in transactions_sent %}
+                            <tr>
+                                <td>{{ transaction.receiver.username }}</td>
+                                <td>{{ transaction.amount }}</td>
+                                <td>{{ transaction.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p class="no-transactions">Вы не отправляли транзакции.</p>
+            {% endif %}
+        </div>
+
+        <div class="transactions-section">
+            <h3>Полученные транзакции</h3>
+            {% if transactions_received %}
+                <table class="transactions-table">
+                    <thead>
+                        <tr>
+                            <th>Отправитель</th>
+                            <th>Сумма</th>
+                            <th>Дата</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for transaction in transactions_received %}
+                            <tr>
+                                <td>{{ transaction.sender.username }}</td>
+                                <td>{{ transaction.amount }}</td>
+                                <td>{{ transaction.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p class="no-transactions">Вы не получали транзакции.</p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
